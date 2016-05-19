@@ -10,6 +10,7 @@ User:$USER            Host:$THIS_HOST        Date:$MYDATE
             3: 昂立web1  139.196.98.231  
             4: 昂立web2  139.196.92.195
             5: 正式平台数据库 139.196.193.12 
+            6: 木星253  139.196.54.253
             q|Q : quit
 ---------------------------------------------------------
 MAYDAY
@@ -33,6 +34,10 @@ read CHOICE
     5) echo  "正式平台数据库"
        sshpass -p  'hello2016!@#' ssh root@139.196.193.12 -p 22
        ;;  
+    6)
+       echo  "s-en.classba.cn    s-math.classba.cn" 
+       sshpass -p  'Xplus2015' ssh root@139.196.54.253 -p 22
+       ;;   
     H|h)
        cat <<MAYDAY
            This is the help screen ,nothing here yet to help you !
