@@ -26,6 +26,8 @@ then
 		"question_bank_math" "数学题库" \
 		"jupiter_sub" "英语业务库" \
 		"question_bank" "英语题库" \
+		"question_battle" "人机大战英语题库" \
+		"jupiter_battle" "人机大战业务库" \
 	2> "$tmpdir"/dbName
 	dbName=$(cat "$tmpdir"/dbName)
 	if [ x"$dbName" == x ]
@@ -71,8 +73,12 @@ printf "\x1B[0m"  #reset attributes
 
 echo "Type this command in your client side to copy the file:"
 printf "\x1B[33m"  #yellow foreground
-echo "scp root@139.196.34.17:$outputFile /tmp/"
-echo  "scp $outputFile  root@139.196.34.17:/tmp/"
+echo "scp -P 10010  root@139.196.34.17:$outputFile /tmp/"
+
+echo "scp root@139.196.193.12:$outputFile /tmp/"
+
+
+echo  "scp -P 10010 $outputFile  root@139.196.34.17:/tmp/"
 printf "\x1B[0m"  #reset attributes
 
 rm -rf "$tmpdir"
