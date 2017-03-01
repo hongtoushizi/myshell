@@ -1,6 +1,7 @@
 #!/bin/bash
-echo "esl-erlang_18.3-1~centos~6_amd64.rpm"
-wget https://packages.erlang-solutions.com/erlang/esl-erlang/FLAVOUR_1_general/esl-erlang_18.3-1~centos~6_amd64.rpm
+#echo "esl-erlang_18.3-1~centos~6_amd64.rpm"
+#wget https://packages.erlang-solutions.com/erlang/esl-erlang/FLAVOUR_1_general/esl-erlang_18.3-1~centos~6_amd64.rpm
+
 
 #—————更新erlang—————#
 echo "更新erlang"
