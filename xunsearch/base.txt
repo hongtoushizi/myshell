@@ -1,0 +1,37 @@
+使用工具
+为了便于用户开发调试，我们在 $sdk/util 目录提供了一套辅助工具。输出结果默认为 UTF-8 编码，如果发生乱码请测试在
+所有命令后加上 -c gbk 以修正编码。
+util.Indexer
+支持批量导入索引、清空索引、刷新提交、同义词管理等，详细请参见 php util/Indexer.php --help。
+php util/Indexer.php demo --clean # 清空 demo 项目的索引数据
+php util/Indexer.php demo --flush # 刷新未写入的索引队列
+# 导入 MySQL 的 dbname.tbl_post 表到 demo 项目并采用平滑重建方式
+php util/Indexer.php demo --rebuild --source=”mysql://root:pass@localhost/dbname” --sql=”SELECT * FROM tbl_post”
+util.Quest
+功能齐全的综合搜索测试工具，详细请参见 php util/Quest.php --help。
+php util/Quest.php demo 测试 --limit 3 # 搜索 demo 项目中包含 “测试” 的数据，并最多只返回 3条
+php util/Quest.php --suggest demo cs # 列出以”cs” 开头的搜索建议
+php util/Quest.php --correct demo 侧试 # 列出 “侧试” 的修正词
+
+
+util.Logger
+搜索日志管理，支持删除、修改、刷新、清空等功能，详细请参见 php util/Logger.php --help。
+php util/Logger.php demo --flush # 刷新 demo 项目搜索日志
+php util/Logger.php demo # 查看 demo 项目的热门搜索词
+php util/Logger.php demo 测试 # 查看 demo 项目和 “测试” 相关的搜索词
+php util/Logger.php demo --clean # 清空 demo 项目搜索日志
+php util/Logger.php demo --del=“word1,word2” # 删除搜索日志中的 word1 和 word2
+php util/Logger.php demo --put=word # 添加 word 到 demo 项目搜索日志中
+util.SearchSkel
+该工具读取并分析项目配置文件 (NAME.ini)，然后生成一个通用适合 WEB 访问的搜索代码骨架。您可以在此基础上补充和
+修改代码即可，能大幅提升开发效率。详细请参见 php util/SearchSkel.php --help。
+php util/SearchSkel.php demo /path/to/web # 生成 demo 项目的搜索骨架，生成结果在　/path/to/web/demo
+搜索骨架代码
+ |-- search.php -- 搜索入口页面，可放入 web 直接访问用于测试
+ |-- search.tpl -- 搜索结果输出模板文件
+ \-- suggest.php -- 提取搜索建议，通过 jQuery.AutoComplete 插件调用
+
+
+
+util/Indexer.php  --p  test --source=mysql://root:root@127.0.0.1/testdb --sql='select ＊ from test where project.status>2' --rebuild
+
